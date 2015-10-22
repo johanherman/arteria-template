@@ -1,0 +1,31 @@
+A simple Arteria template for a self contained (Tornado) REST service. 
+Listens on http://localhost:2424 for a string to echo, and will then
+print the value together with the value from the config file. 
+
+Try accessing e.g. http://localhost:2424/api for API docs
+or http://localhost:2424/api/1.0/echo/hej to print back a msg. 
+
+Manual installation (tested with python > 2.7.6):
+    # Install the dependencies and the arteria-siswrap package
+    virtualenv /opt/arteria/arteria-template-env
+    source /opt/arteria/arteria-template-env/bin/activate
+    pip install -r requirements/dev
+    python setup.py install
+
+Manual run
+    /opt/arteria/arteria-template/bin/template-ws --port 10900 --configroot ./config/ --debug
+
+Manual tests
+    py.test tests/integration/rest_tests.py
+
+Setup with bells and whistles (not actively supported anymore)
+    # Use the install script for installation of service and controller scripts.
+    # Also runs integration tests in the end
+    ./scripts/install
+
+    # Manually control the service afterwards with
+    /etc/init.d/siswrap-wsd
+
+    # Manually run integration tests afterwards with
+    /usr/local/bin/siswrap-ws-test
+

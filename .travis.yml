@@ -1,0 +1,18 @@
+languange: python
+
+python: 
+    - "2.7"
+
+before_install: 
+    - sudo pip install virtualenv
+    - virtualenv $TRAVIS_BUILD_DIR/siswrap_env/
+
+install:
+    - source $TRAVIS_BUILD_DIR/siswrap_env/bin/activate 
+    - pip install -e . -r ./requirements/dev
+
+script: 
+    - py.test tests/unit/*.py
+
+notifications: 
+    email: false
